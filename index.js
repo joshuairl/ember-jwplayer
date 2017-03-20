@@ -16,14 +16,12 @@ module.exports = {
 
     this.eachAddonInvoke('included', [app]);
     this._super.included.apply(this, [app]);
-
-    this.app.import('vendor/jwplayer-7.9.3/jwplayer.js');
-    this.app.import('vendor/jwplayer-7.9.3/provider.html5.js');
-    this.app.import('vendor/jwplayer-7.9.3/jw-icons.ttf', {
-      destDir: '/'
-    });
-    this.app.import('vendor/jwplayer-7.9.3/jw-icons.woff', {
-      destDir: '/'
-    });
+    
+    // this.app.import('vendor/jwplayer-7.9.3/jw-icons.ttf', {
+    //   destDir: '/'
+    // });
+    // this.app.import('vendor/jwplayer-7.9.3/jw-icons.woff', {
+    //   destDir: '/'
+    // });
   },
 };
