@@ -19,7 +19,7 @@ export default Ember.Component.extend({
   repeat: false,
   abouttext: '',
   aboutlink: 'https://www.jwplayer.com/learn-more',
-
+  advertising: null,
   controls: true,
   width: '800',
   height: '600',
@@ -63,48 +63,48 @@ export default Ember.Component.extend({
       primary: this.get('primary'),
       flashplayer: this.get('flashplayer'),
       base: this.get('base'),
-
+      advertising: this.get("advertising"),
       ga: this.get('ga'),
 
     })
     .on('setupError', message => {
-      this.sendAction('setupError', message);
+      this.send('onsetupError', message);
     })
     .on('error', message => {
-      this.sendAction('error', message);
+      this.send('onerror', message);
     })
     .on('play', oldstate => {
-      this.sendAction('play', oldstate);
+      this.send('onPlay', oldstate);
     })
     .on('pause', oldstate => {
-      this.sendAction('pause', oldstate);
+      this.send('onPause', oldstate);
     })
     .on('complete', () => {
-      this.sendAction('complete');
+      this.send('onComplete');
     })
     .on('buffer', buffer => {
-      this.sendAction('buffer', buffer);
+      this.send('onbuffer', buffer);
     })
     .on('bufferChange', buffer => {
-      this.sendAction('bufferChange', buffer);
+      this.send('onbufferChange', buffer);
     })
     .on('idle', oldstate => {
-      this.sendAction('idle', oldstate);
+      this.send('onidle', oldstate);
     })
     on('firstFrame', loadTime => {
-      this.sendAction('idle', loadTime);
+      this.send('onidle', loadTime);
     })
     .on('time', duration => {
-      this.sendAction('time', duration);
+      this.send('ontime', duration);
     })
     .on('mute', mute => {
-      this.sendAction('mute', mute);
+      this.send('onmute', mute);
     })
     .on('volume', volume => {
-      this.sendAction('volume', volume);
+      this.send('onvolume', volume);
     })
     .on('fullscreen', fullscreen => {
-      this.sendAction('fullscreen', fullscreen);
+      this.send('onfullscreen', fullscreen);
     });
   })
 });
